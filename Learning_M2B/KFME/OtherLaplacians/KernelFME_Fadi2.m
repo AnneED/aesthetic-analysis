@@ -1,40 +1,26 @@
-function [F, Alphas] = KernelFME_Fadi(X, labels, labeled_mask, Beta, Gamma, Mu, T0) 
+function [F, Alphas] = KernelFME_Fadi2(X, labels, labeled_mask, Beta, Gamma, Mu, T0)
 
+% Calculate kernel
 Ker = KernelMatrix(X, X, T0);
-LbMatrix.fea = X(:,labeled_mask);
-LbMatrix.gnd = labels(labeled_mask);
-UnlbMatrix.fea = X(:,~labeled_mask);
-UnlbMatrix.gnd = labels(~labeled_mask);
 
-
-
-X = [LbMatrix.fea, UnlbMatrix.fea];
-n = size(LbMatrix.fea,2);
+% Store number of samples
 m = size(X,2);
-labeled_mask(1:n) = 1;
-labeled_mask(n+1:m) = 0;
-UnLabeled_loc = labeled_mask == 0;
-Labeled_loc   = labeled_mask == 1;
-X_U =  X(: , UnLabeled_loc);
-X_L =  X(: , Labeled_loc  );
-X_T    = [X_L X_U];
-[~, Lt] = W_KNN_Infunc(X_T,10, 10*exp(-1));
-c = size(unique(LbMatrix.gnd),2);
-Y=zeros(m ,c);
-%for i = 1 : n
-%    Y(i, LbMatrix.gnd(i)) = 1;
-%end     %%%% 
+
+% Calculate Laplacian
+[~, Lt] = W_KNN_Infunc(X, 10, 10*exp(-1));
+
+% Target labels (now real numbers)
 Y = zeros(m, 1);    %%% Modified to work on regression
-Y(1:n) = labels(Labeled_loc);      %%% Modified to work on regression
+Y( labeled_mask ) = labels( labeled_mask );      %%% Modified to work on regression
 
-U = zeros(m);
-for i = 1 : n 
-    U(i,i) = 1;
-end
+% Create U matrix using labeled mask
+U = single( diag( labeled_mask ) );
 
+% Identity matrix
 Im = eye(m);
 
-A = Gamma / Mu * inv(Im + Gamma / Mu * Ker);
+% Solve analitically KFME
+A = (Im + Gamma / Mu * Ker)\(Gamma / Mu);
 
 F = Beta * (Beta * U + Lt + Gamma * (Ker * A - Im)' * (Ker * A - Im) + Mu * A' * Ker * A) \ U * Y;
 
