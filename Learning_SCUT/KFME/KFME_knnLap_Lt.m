@@ -35,7 +35,7 @@ for i = 1:length(parameters_Beta)
                 Gamma = parameters_Gamma(j);
                 Mu = parameters_Mu(k);
                 T0 = parameters_T0(ii);
-                parfor l = 1:10 
+                parfor l = 1:10
                     mask = labeled_masks50(:, l);
                     unlabeled = (mask == 0);
                     [F, Alphas] = KernelFME_Fadi2(X_n, labels, mask, Beta, Gamma, Mu, T0); 
@@ -154,12 +154,6 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0461
-% rmse = 0.0642
-% pc = 0.9025
-% ee = 0.0943
-
-
 
 
 load('results_KFME_70knn_vgg7.mat')
@@ -168,12 +162,6 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0291
-% rmse = 0.0486
-% pc = 0.9465
-% ee = 0.0573
-
-
 
 
 load('results_KFME_90knn_vgg7.mat')
@@ -182,37 +170,3 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0109
-% rmse = 0.0284
-% pc = 0.9768
-% ee = 0.0192
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
