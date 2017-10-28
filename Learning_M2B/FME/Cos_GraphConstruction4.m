@@ -1,5 +1,5 @@
 function [W] = Cos_GraphConstruction4(data, epsilon, scores, devs, K)
-% Cos_GraphConstruction3 with rescaling
+% This function creates the similarity matrix combining the cosine feature similarity and the score similarity. The cosine similarity is rescaled so that it is a positive number ranging from 0 to 1.
 
 
 % INPUT:
