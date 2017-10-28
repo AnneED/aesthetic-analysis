@@ -44,8 +44,6 @@ for m = M
 
 end
 
-% Queda muy rocoso, porque el salto es muuu grande (50 sujetos de test son
-% demasiado pocos, asi que mejor hacerlo con 70/30)
 
 hold on;
 plot(M, P_mean, 'color', [1 0.7 0], 'LineWidth', 1.1);
