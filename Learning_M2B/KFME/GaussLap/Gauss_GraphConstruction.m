@@ -1,5 +1,7 @@
 function [W] = Gauss_GraphConstruction(data, epsilon, scores, devs, K)
 
+% This function creates the similarity matrix combining the Gaussian feature similarity and the score similarity. 
+
 % INPUT:
 %
 % data: data matrix. Columns represent samples and rows features.
