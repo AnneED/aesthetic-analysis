@@ -59,7 +59,7 @@ plot(M, P_FME, 'magenta', 'LineWidth', 1.1);
 hold on;
 plot(M, P_KFME, 'blue', 'LineWidth', 1.1);
 
-legend('Mean', 'NN', 'RR', 'SVR', 'LGC', 'FME', 'KFME');
+legend('Baseline', 'NN', 'RR', 'SVR', 'LGC', 'FME', 'KFME');
 title('REC curves')
 xlabel('Tolerance')
 ylabel('Proportion of images')
