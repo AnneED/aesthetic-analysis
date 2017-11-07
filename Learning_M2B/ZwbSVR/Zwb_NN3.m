@@ -13,8 +13,6 @@ parameters = [1e-09 1e-06 1e-03 1 1e+3 1e+6 1e+9];
 dims = 10:10:400;
 
 
-%% 50/50 training/test proportion
-
 Rate1_euc = zeros(7*7*7, length(dims));
 Rate2_euc = zeros(7*7*7, length(dims));
 Rate3_euc = zeros(7*7*7, length(dims));
@@ -32,6 +30,8 @@ RateTot_cos = zeros(7*7*7, length(dims));
 % Option 1: using the Z given by the output of the algorithm
 index = 1;
 tic;
+
+% Creation of 3 discrete classes: most attractive, average attractiveness, least attractive (intermediate instances are removed to have separate classes)
 
 mean(labels)
 % 0.58
@@ -57,7 +57,7 @@ labels2(idx) = 0;
 classes(idx) = 0;
 
 
-mask = classes ~= 0;
+mask = classes ~= 0; % mask to remove intermediate instances
 X = [X200(:, mask)];
 classes = classes(mask);
 
@@ -144,13 +144,13 @@ toc;
 
 
 
-%% Results on Zwb
+%% Results on Zwb features
 
 load('results_Zwb_3classes_eM2B');
 
 
 % EUCLIDEAN DISTANCE:
-% maximizamos rateTot
+% maximizing rateTot
 [rateTot, I] = max(RateTot_euc(:));
 [I_row, I_col] = ind2sub(size(RateTot_euc), I);
 rateTot
@@ -165,7 +165,7 @@ Rate3_euc(I_row, I_col)
 % rate2 = 0.7834
 % rate3 = 0.1
 
-% Que pasa si maximizamos rate1
+% what happens maximizaing rate1
 [rate1, I] = max(Rate1_euc(:));
 [I_row, I_col] = ind2sub(size(RateTot_euc), I);
 rate1
@@ -177,8 +177,7 @@ Rate3_euc(I_row, I_col)
 RateTot_euc(I_row, I_col)
 
 
-% Que pasa si maximizamos rate3
-% lo mismo
+% what happens if we maximize Rate3
 [rate3, I] = max(Rate3_euc(:));
 [I_row, I_col] = ind2sub(size(RateTot_euc), I);
 Rate1_euc(I_row, I_col)
@@ -193,7 +192,7 @@ RateTot_euc(I_row, I_col)
 
 
 % COSINE DISTANCE
-% maximizamos rateTot
+% maximizing rateTot
 [rateTot, I] = max(RateTot_cos(:));
 [I_row, I_col] = ind2sub(size(RateTot_cos), I);
 rateTot
@@ -209,7 +208,7 @@ Rate3_cos(I_row, I_col)
 % rate3 = 0.05
 
 
-% Que pasa si maximizamos rate1
+% what happens if we maximize rate1
 [rate1, I] = max(Rate1_cos(:));
 [I_row, I_col] = ind2sub(size(RateTot_cos), I);
 rate1
