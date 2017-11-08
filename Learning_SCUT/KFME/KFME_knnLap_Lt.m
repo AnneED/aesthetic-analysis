@@ -1,7 +1,10 @@
 % KFME 						
-% The Laplacian is based on gaussian feature similarity
+% The Laplacian is based on Gaussian feature similarity only.
 % labels are normalized (to lie on the interval (0.2, 1))
 % features: vgg-face layer 7 (preprocessing: L2 normalization + pca(200 dimensions) )
+% A linear transfom is applied to the scores after KFME to adjust the min
+% and max values.
+% Master thesis: Table 3.8 (Laplacian: Gaussian).
 
 
 load('initial_data_SCUT_vgg.mat');
@@ -40,7 +43,9 @@ for i = 1:length(parameters_Beta)
                     unlabeled = (mask == 0);
                     [F, Alphas] = KernelFME_Fadi2(X_n, labels, mask, Beta, Gamma, Mu, T0); 
                     max_labels = max(labels(mask));
-                    min_labels = min(labels(mask)); 
+                    min_labels = min(labels(mask));
+                    % apply linear transform to scores based on min and max
+                    % values
                     predicted = (F-min(F))*(max_labels - min_labels)/(max(F)-min(F)) + min_labels;
                     mae = mean(abs(predicted(unlabeled) - labels(unlabeled)));
                     pc = corr(predicted(unlabeled), labels(unlabeled));
@@ -153,7 +158,10 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-
+% MAE: 0.0603
+% RMSE: 0.0784
+% PC: 0.8236
+% EE: 0.1326
 
 load('results_KFME_70knn_vgg7.mat')
 [mae, idx] = min(mean(MAE));
@@ -161,7 +169,10 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-
+% MAE: 0.0551
+% RMSE: 0.0727
+% PC: 0.8435
+% EE: 0.1133
 
 load('results_KFME_90knn_vgg7.mat')
 [mae, idx] = min(mean(MAE));
@@ -169,3 +180,7 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
+% MAE: 0.0554
+% RMSE: 0.0704
+% PC: 0.8464
+% EE: 0.1119

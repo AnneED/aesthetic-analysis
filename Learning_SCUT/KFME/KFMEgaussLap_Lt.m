@@ -1,8 +1,10 @@
-
 % KFME 						
-% The Laplacian is based on feature similarity (gaussian) + score similarity
+% The Laplacian is based on feature similarity (Gaussian) + score similarity
 % labels are normalized (to lie on the interval (0.2, 1))
 % features: vgg-face layer 7 (preprocessing: L2 normalization + pca(200 dimensions) )
+% A linear transfom is applied to the scores after KFME to adjust the min
+% and max values.
+% Master thesis: Table 3.8 (Laplacian: Gaussian + score).
 
 load('initial_data_SCUT_vgg.mat');
 var = devsn.^2;
@@ -164,10 +166,10 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0455
-% rmse = 0.0633
-% pc = 0.9124
-% ee = 0.0943
+% mae = 0.0603
+% rmse = 0.0784
+% pc = 0.8243
+% ee = 0.1325
 
 
 
@@ -177,10 +179,10 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0281
-% rmse = 0.0466
-% pc = 0.9520
-% ee = 0.0540
+% mae = 0.0550
+% rmse = 0.0729
+% pc = 0.8445
+% ee = 0.1140
 
 
 
@@ -190,10 +192,10 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0104
-% rmse = 0.0279
-% pc = 0.9781
-% ee = 0.0182
+% mae = 0.0561
+% rmse = 0.0710
+% pc = 0.8454
+% ee = 0.1140
 
 
 % Parameters of the best model:
@@ -235,21 +237,3 @@ for l = 1:10
     mae = mean(abs(predicted(unlabeled) - labels(unlabeled)))
     pc = corr(predicted(unlabeled), labels(unlabeled))
 end
-
-% El "mejor" es el de la partición numero 6, así que
-% cogemos esos datos o no?
-
-l = 6;
-mask = labeled_masks90(:, l);
-unlabeled = (mask == 0);
-Y = labels; Y(unlabeled) = 0;
-W = Gauss_GraphConstruction(X_n, epsilon, Y, devs);
-L = diag(sum(W)) - W; 
-[F, Alphas] = KernelFME_Laplacian(X_n, labels, mask, Beta, Gamma, Mu, T0, L); 
-
-save('Best_KFME_model', 'Alphas');
-
-
-
-
-

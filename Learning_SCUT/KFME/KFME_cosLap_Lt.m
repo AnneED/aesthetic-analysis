@@ -1,8 +1,10 @@
-
 % KFME 						
 % The Laplacian is based on feature similarity (cosine) + score similarity
 % labels are normalized (to lie on the interval [0.1, 1])
 % features: vgg-face layer 7 (preprocessing: L2 normalization + pca(200 dimensions) )
+% A linear transfom is applied to the scores after KFME to adjust the min
+% and max values.
+% Master thesis: Table 3.8 (Laplacian: Cosine + score).
 
 load('initial_data_SCUT_vgg.mat');
 var = devsn.^2;
