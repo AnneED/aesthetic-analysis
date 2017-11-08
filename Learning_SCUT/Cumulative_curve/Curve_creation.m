@@ -10,7 +10,7 @@ load('results_AE_KFME.mat')
 load('results_AE_mean.mat')
 
 % M = upper bound
-M = [0:0.00001:0.6];
+M = [0:0.00001:0.3];
 P_NN = [];
 P_RR = [];
 P_SVR = [];
