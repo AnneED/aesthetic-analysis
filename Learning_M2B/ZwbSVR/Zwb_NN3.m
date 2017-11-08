@@ -36,9 +36,9 @@ tic;
 mean(labels)
 % 0.58
 
-sum(labels > 0.85)
-sum(labels < 0.3)
-sum(labels > 0.44 & labels < 0.72)
+display(['Number of images with score over 0.85: ' num2str(sum(labels > 0.85))]);
+display(['Number of images with score under 0.3: ' num2str(sum(labels < 0.3))]);
+display(['Number of images with score over 0.44 and under 0.72: ' num2str( sum(labels > 0.44 & labels < 0.72) )]);
 
 
 classes = zeros(length(labels), 1);

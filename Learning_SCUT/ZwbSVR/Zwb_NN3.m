@@ -36,9 +36,9 @@ tic;
 
 % Creation of 3 discrete classes: most attractive, average attractiveness, least attractive (intermediate instances are removed to have separate classes)
 
-sum(labels > 0.7)
-sum(labels < 0.4)
-sum(labels > 0.45 & labels < 0.65)
+display(['Number of images with score over 0.7: ' num2str(sum(labels > 0.7))]);
+display(['Number of images with score under 0.4: ' num2str(sum(labels < 0.4))]);
+display(['Number of images with score over 0.45 and under 0.65: ' num2str( sum(labels > 0.45 & labels < 0.65) )]);
 
 labels2 = labels;
 labels2(labels > 0.65 | labels <= 0.45) = 10;
