@@ -20,7 +20,7 @@ U = single( diag( labeled_mask ) );
 Im = eye(m);
 
 % Solve analitically KFME
-A = (Im + Gamma / Mu * Ker)\(Gamma / Mu);
+A = Gamma / Mu * inv(Im + Gamma / Mu * Ker);
 
 F = Beta * (Beta * U + Lt + Gamma * (Ker * A - Im)' * (Ker * A - Im) + Mu * A' * Ker * A) \ U * Y;
 
