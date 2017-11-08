@@ -57,7 +57,6 @@ for i = 1:length(parameters_Beta)
     end
 end
 toc;
-% mas o menos 5 horas
 
 save('results_KFME_50knn_vgg7.mat', 'MAE', 'PC', 'RMSE', 'E');
 
