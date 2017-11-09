@@ -227,6 +227,7 @@ unlabeled = (mask == 0);
 predicted = F;
 pc = corr(predicted(unlabeled), labels(unlabeled))
 % 0.8347
+% Master thesis: Figure 3.5.
 scatter(labels(unlabeled), predicted(unlabeled))
 title('Initial predictions of KFME')                    
 xlabel('Real labels')
