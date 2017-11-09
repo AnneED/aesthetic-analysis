@@ -166,10 +166,10 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0455
-% rmse = 0.0632
-% pc = 0.9125
-% ee = 0.0941
+% mae = 0.0603
+% rmse = 0.0783
+% pc = 0.8242
+% ee = 0.1323
 
 
 
@@ -179,10 +179,10 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0281
-% rmse = 0.0466
-% pc = 0.9520
-% ee = 0.0540
+% mae = 0.0550
+% rmse = 0.0728
+% pc = 0.8446
+% ee = 0.1138
 
 
 
@@ -192,10 +192,10 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0104
-% rmse = 0.0278
-% pc = 0.9782
-% ee = 0.0182
+% mae = 0.0560
+% rmse = 0.0709
+% pc = 0.8455
+% ee = 0.1138
 
 
 

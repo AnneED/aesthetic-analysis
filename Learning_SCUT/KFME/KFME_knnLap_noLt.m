@@ -151,13 +151,13 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0919
-% rmse = 0.1303
-% pc = 0.6628
-% ee = 0.2200
+% mae = 0.0912
+% rmse = 0.1233
+% pc = 0.7742
+% ee = 0.2284
 
 max(mean(PC))
-% 0.9051
+% 0.8240
 
 
 load('results_KFME_70knn_vgg7_noLt.mat')
@@ -166,13 +166,13 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0880
-% rmse = 0.1245
-% pc = 0.8072
-% ee = 0.2072
+% mae = 0.0859
+% rmse = 0.1142
+% pc = 0.7647
+% ee = 0.2159
 
 max(mean(PC))
-% 0.9481
+% 0.8437
 
 
 load('results_KFME_90knn_vgg7_noLt.mat')
@@ -181,13 +181,13 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0866
-% rmse = 0.1218
-% pc = 0.8537
-% ee = 0.2042
+% mae = 0.0832
+% rmse = 0.1097
+% pc = 0.7957
+% ee = 0.2121
 
 max(mean(PC))
-% 0.9781
+% 0.8489
 
 
 %% Best model according to the PC
@@ -195,7 +195,8 @@ max(mean(PC))
 
 load('results_KFME_90knn_vgg7_noLt.mat')
 [pc, idx] = max(mean(PC))
-% 0.9781
+% pc = 0.8489
+% idx = 753
 
 pp = [];
 for i = 1:length(parameters_Beta)
@@ -224,7 +225,7 @@ unlabeled = (mask == 0);
 %predicted = ((F-min(F))*4/max(F-min(F)) + 1)/5;
 predicted = F;
 pc = corr(predicted(unlabeled), labels(unlabeled))
-% 0.9849
+% 0.8347
 scatter(labels(unlabeled), predicted(unlabeled))
 title('Initial predictions of KFME')                    
 xlabel('Real labels')
