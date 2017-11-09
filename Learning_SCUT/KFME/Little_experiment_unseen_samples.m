@@ -1,3 +1,5 @@
+% Little experiment to check the performance of KFME on unseen data.
+% Master thesis: Table 3.10.
 
 load('initial_data_SCUT_vgg.mat');
 
@@ -115,10 +117,10 @@ mae
 rmse = RMSE(1, idx)
 pc = PC(1, idx)
 ee = E(1, idx)
-% mae = 0.0545
-% rmse = 0.0717
-% pc = 0.8777
-% ee = 0.1066
+% mae = 0.0751
+% rmse = 0.0926
+% pc = 0.7988
+% ee = 0.1714
 
 
 
