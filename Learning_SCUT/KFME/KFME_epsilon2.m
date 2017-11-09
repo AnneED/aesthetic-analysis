@@ -1,16 +1,16 @@
-
 % KFME 						
-% The Laplacian is based on feature similarity (gaussian) + score similarity
+% The Laplacian is based on feature similarity (Gaussian) + score similarity
 % labels are normalized (to lie on the interval (0.2, 1))
 % features: vgg-face layer 7 (preprocessing: L2 normalization + pca(200 dimensions) )
+% Experiment with different values of epsilon in score similarity with
+% 90/10 training/test proportion.
+% Master thesis: Table 3.9.
 
 load('initial_data_SCUT_vgg.mat');
 var = devsn.^2;
 devs = devsn;
 labels = labelsn;
 X_n = Xpca_7;
-
-
 
 % epsilon = [0.13 0.17 0.2]; % Remember labels are normalized /5
 parameters_Beta = [0.1 1 10 100 1000 10000];

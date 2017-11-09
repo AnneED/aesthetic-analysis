@@ -1,8 +1,9 @@
 % KFME 						
-% The Laplacian is based on gaussian feature similarity
+% The Laplacian is based on Gaussian feature similarity only.
 % labels are normalized (to lie on the interval (0.2, 1))
 % features: vgg-face layer 7 (preprocessing: L2 normalization + pca(200 dimensions) )
-
+% No linear transfom is applied to the scores after KFME.
+% Master thesis: Table 3.7 (Output scaling: No).
 
 load('initial_data_SCUT_vgg.mat');
 var = devsn.^2;
