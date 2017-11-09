@@ -2,8 +2,10 @@
 % The Laplacian is based on feature similarity (Gaussian) + score similarity
 % labels are normalized (to lie on the interval (0.2, 1))
 % features: vgg-face layer 7 (preprocessing: L2 normalization + pca(200 dimensions) )
-% Experiment with different values of epsilon in score similarity with
-% 90/10 training/test proportion.
+% Experiment with different values of epsilon (0.13, 0.17, 0.20) in score
+% similarity with 90/10 training/test proportion.
+% A linear transfom is applied to the scores after KFME to adjust the min
+% and max values.
 % Master thesis: Table 3.9.
 
 load('initial_data_SCUT_vgg.mat');
@@ -175,10 +177,10 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0104
-% rmse = 0.0274
-% pc = 0.9787
-% ee = 0.0182
+% mae = 0.0559
+% rmse = 0.0709
+% pc = 0.8453
+% ee = 0.1133
 
 
 % eps = 0.17
@@ -188,22 +190,22 @@ mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0105
-% rmse = 0.0275
-% pc = 0.9785
-% ee = 0.0182
+% mae = 0.0557
+% rmse = 0.0707
+% pc = 0.8458
+% ee = 0.1126
 
 
-% eps = 0.2
+% eps = 0.20
 load('results_KFME_eps_2.mat')
 [mae, idx] = min(mean(MAE));
 mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
 ee = mean(E(:, idx))
-% mae = 0.0105
-% rmse = 0.0274
-% pc = 0.9788
-% ee = 0.0181
+% mae = 0.0556
+% rmse = 0.0706
+% pc = 0.8462
+% ee = 0.1122
 
 
