@@ -1,9 +1,10 @@
-
 % KFME 						
-% The Laplacian is based on feature similarity (gaussian) + score similarity
+% The Laplacian is based on feature similarity (Gaussian) + score similarity
 % labels are normalized (to lie on the interval (0.1, 1))
 % features: vgg-face layer 7 (preprocessing: L2 normalization + pca(200 dimensions) )
-
+% A linear transfom is applied to the scores after KFME to adjust the min
+% and max values.
+% Master thesis: Table 3.21 (Laplacian: Cosine + score).
 load('initial_data_M2Be_vgg.mat');
 %var = devsn.^2;
 devs = 0;
@@ -197,15 +198,6 @@ toc;
 save('results_bKFME_50cos_vgg7.mat', 'MAE', 'PC', 'RMSE');
 
 
-
-
-
-
-
-
-
-
-
 %% Results
 
 % Eastern
@@ -214,9 +206,9 @@ load('results_eKFME_50cos_vgg7.mat')
 mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
-% mae = 0.0709
-% rmse = 0.1196
-% pc = 0.7682
+% mae = 0.1357
+% rmse = 0.1669
+% pc = 0.4469
 
 
 % Western
@@ -225,9 +217,9 @@ load('results_wKFME_50cos_vgg7.mat')
 mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
-% mae = 0.0719
-% rmse = 0.1163
-% pc = 0.7835
+% mae = 0.1133
+% rmse = 0.1419
+% pc = 0.6362
 
 
 % both
@@ -236,15 +228,6 @@ load('results_bKFME_50cos_vgg7.mat')
 mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
-% mae = 0.0741
-% rmse = 0.1259
-% pc = 0.7331
-
-
-
-
-
-
-
-
-
+% mae = 0.1302
+% rmse = 0.1624
+% pc = 0.4800
