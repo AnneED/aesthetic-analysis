@@ -1,19 +1,21 @@
-
-% Values of epsilon = 0.005, 0.03, 0.05, 0.08, 0.13, 0.17, 0.2
-
 % KFME 						
-% The Laplacian is based on feature similarity (gaussian) + score similarity
-% labels are normalized (to lie on the interval (0.1, 1))
-% features: vgg-face layer 7 (preprocessing: L2 normalization + pca(200 dimensions) )
+% Experiment with KFME and different values of delta (epsilon) using a
+% 50/50 training/test partition in the Eastern images of M2B.
+% Values of epsilon = 0.005, 0.03, 0.05, 0.08, 0.13, 0.17, 0.2.
+% The Laplacian is based on feature similarity (Gaussian) + score
+% similarity.
+% Labels are normalized (to lie on the interval (0.1, 1)).
+% Features: vgg-face layer 7 (preprocessing: L2 normalization + pca(200
+% dimensions) ).
+% A linear transfom is applied to the scores after KFME to adjust the min
+% and max values.
+% Master thesis: Table 3.22 (Laplacian: Gaussian).
 
 load('initial_data_M2Be_vgg.mat');
 %var = devsn.^2;
 devs = 0;
 labels = labelsn_e;
 X_n = Xpca_7e;
-
-
-
 
 
 parameters_Beta = [0.1 1 10 100 1000 10000];
@@ -354,9 +356,9 @@ load('results_eKFME_epsilon_005.mat')
 mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
-% mae = 0.0709
-% rmse = 0.1196
-% pc = 0.7682
+% mae = 0.1358
+% rmse = 0.1668
+% pc = 0.4503
 
 
 load('results_eKFME_epsilon_03.mat')
@@ -364,9 +366,9 @@ load('results_eKFME_epsilon_03.mat')
 mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
-% mae = 0.0709
-% rmse = 0.1196
-% pc = 0.7682
+% mae = 0.1358
+% rmse = 0.1671
+% pc = 0.4457
 
 
 load('results_eKFME_epsilon_05.mat')
@@ -374,9 +376,9 @@ load('results_eKFME_epsilon_05.mat')
 mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
-% mae = 0.0709
-% rmse = 0.1196
-% pc = 0.7682
+% mae = 0.1358
+% rmse = 0.1670
+% pc = 0.4461
 
 
 
@@ -385,9 +387,9 @@ load('results_eKFME_epsilon_08.mat')
 mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
-% mae = 0.0709
-% rmse = 0.1196
-% pc = 0.7683
+% mae = 0.1357
+% rmse = 0.1670
+% pc = 0.4466
 
 
 
@@ -396,9 +398,9 @@ load('results_eKFME_epsilon_13.mat')
 mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
-% mae = 0.0709
-% rmse = 0.1196
-% pc = 0.7682
+% mae = 0.1357
+% rmse = 0.1670
+% pc = 0.4466
 
 
 
@@ -407,9 +409,9 @@ load('results_eKFME_epsilon_17.mat')
 mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
-% mae = 0.0709
-% rmse = 0.1196
-% pc = 0.7681
+% mae = 0.1357
+% rmse = 0.1670
+% pc = 0.4461
 
 
 
@@ -418,9 +420,9 @@ load('results_eKFME_epsilon_20.mat')
 mae
 rmse = mean(RMSE(:, idx))
 pc = mean(PC(:, idx))
-% mae = 0.0709
-% rmse = 0.1196
-% pc = 0.7680
+% mae = 0.1357
+% rmse = 0.1670
+% pc = 0.4462
 
 
 
