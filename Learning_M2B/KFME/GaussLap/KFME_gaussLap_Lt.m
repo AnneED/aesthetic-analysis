@@ -203,9 +203,6 @@ display( ['Best Eastern RMSE = ' num2str(rmse)] );
 pc = mean(PC(:, idx));
 display( ['Best Eastern PC = ' num2str(pc)] );
 
-% mae = 0.0709
-% rmse = 0.1196
-% pc = 0.7682
 
 % Western
 load('results_wKFME_50gauss_vgg7.mat')
@@ -216,9 +213,6 @@ display( ['Best Western RMSE = ' num2str(rmse)] );
 pc = mean(PC(:, idx));
 display( ['Best Western PC = ' num2str(pc)] );
 
-% mae = 0.0717
-% rmse = 0.1159
-% pc = 0.7848
 
 % Both
 load('results_bKFME_50gauss_vgg7.mat')
@@ -229,7 +223,12 @@ display( ['Best Both RMSE = ' num2str(rmse)] );
 pc = mean(PC(:, idx));
 display( ['Best Both PC = ' num2str(pc)] );
 
-% mae = 0.0741
-% rmse = 0.1259
-% pc = 0.7331
-
+% Best Eastern MAE = 0.13571
+% Best Eastern RMSE = 0.16696
+% Best Eastern PC = 0.44662
+% Best Western MAE = 0.11341
+% Best Western RMSE = 0.14247
+% Best Western PC = 0.63192
+% Best Both MAE = 0.13025
+% Best Both RMSE = 0.16229
+% Best Both PC = 0.48056
